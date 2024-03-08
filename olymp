@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тестирование</h1>
+        <div class="question">
+            <p>Вопрос 1: Что такое HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="question1" value="a"> Язык разметки гипертекста</label>
+                <label><input type="radio" name="question1" value="b"> Язык программирования</label>
+                <label><input type="radio" name="question1" value="c"> Веб-браузер</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>Вопрос 2: Какой элемент используется для создания ссылки в HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="question2" value="a"> &lt;a&gt;</label>
+                <label><input type="radio" name="question2" value="b"> &lt;link&gt;</label>
+                <label><input type="radio" name="question2" value="c"> &lt;href&gt;</label>
+            </div>
+        </div>
+        <button onclick="submitAnswers()">Проверить ответы</button>
+    </div>
+
+    <script>
+        function submitAnswers() {
+            var totalQuestions = 2;
+            var score = 0;
+
+            var answers = {
+                question1: "a",
+                question2: "a"
+            };
+
+            for (var i = 1; i <= totalQuestions; i++) {
+                var radios = document.getElementsByName('question'+i);
+                for (var j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        if (radios[j].value === answers['question'+i]) {
+                            score++;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            alert('Вы ответили правильно на ' + score + ' из ' + totalQuestions + ' вопросов.');
+        }
+    </script>
+</body>
+</html>
